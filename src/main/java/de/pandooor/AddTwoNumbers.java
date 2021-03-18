@@ -46,11 +46,28 @@ public class AddTwoNumbers {
         int currentsum = 0;
         ArrayList<Integer> answer = new ArrayList();
         int longest = Math.max(l1.size(), l2.size());
+        int n1 = 0;
+        int n2 = 0;
         for (int i = 0; i < longest; i++) {
+            if (i < l1.size()) {
+                n1 = l1.get(i);
+            } else {
+                n1 = 0;
+            }
+            if (i < l2.size()) {
+                n2 = l2.get(i);
+            } else {
+                n2 = 0;
+            }
             //check whether there are numbers left in both lists else replace get(i) with 0
-            currentsum = l1.get(i) + l2.get(i);
+            currentsum += n1 + n2;
+            answer.add(currentsum % 10);
+            if (currentsum > 9) {
+                currentsum = 1;
+            } else {
+                currentsum = 0;
+            }
         }
-
         return answer;
     }
 
